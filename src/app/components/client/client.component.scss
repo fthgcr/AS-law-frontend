@@ -1,0 +1,21 @@
+::ng-deep body {
+  background: linear-gradient(90deg, #c7c5f4, #776bcc);
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url("https://static.wixstatic.com/media/c116d7_2501c62a59874cea886c659ea1e0180f~mv2.jpg/v1/fill/w_163,h_107,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/WhatsApp%20Image%202024-02-07%20at%2021_edited_j.jpg");
+  background-size: cover;
+}
+
+.container {
+    display: flex;
+    margin-top: 13%;
+    margin-left: 45%;
+  }

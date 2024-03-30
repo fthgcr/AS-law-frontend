@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <button type="button" class="bg-gray-500 py-2 px-4 text-white rounded-md hover:bg-black-600 focus:outline-none" (click)="goList()" style="float: left; display: flex; position: fixed; left: 20px; top: 20px;"><mat-icon>keyboard_arrow_left</mat-icon></button>
+
+    <div class="bg-gray-900 h-screen flex flex-col items-center justify-center text-center">
+        
+        <div class="text-white">
+            <h1 class="text-4xl font-bold">Müvekkil</h1>
+            <!-- <p class="mt-4 text-lg">Interested in purchasing mydomain.com ? Contact us!</p> -->
+        </div>
+        <div class="mt-8">
+            <form class="flex flex-col items-center">
+                <input type="text" name="name" placeholder="İsim" class="py-2 px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-4" required [(ngModel)]="user.firstName"/>
+                <input type="text" name="surname" placeholder="Soyisim" class="py-2 px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-4" required [(ngModel)]="user.surname"/>
+                <input type="text" name="identify" placeholder="T.C. Kimlik No" class="py-2 px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-4" required (input)="onInput($event)" maxlength="11" [(ngModel)]="user.identify"/>
+                <input type="text" name="password" placeholder="Şifre" class="py-2 px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-4" required [(ngModel)]="user.password"/>
+                <input type="text" name="phone" placeholder="Tel (Örn. 05518877919)" class="py-2 px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-4" required maxlength="11" [(ngModel)]="user.phone"/>
+                <textarea name="message" placeholder="Müvekkilin Göreceği Mesaj" rows="6" class="py-2 px-4 bg-gray-800 text-white rounded-md focus:outline-none mb-8 resize-none w-full" required [(ngModel)]="user.definition" maxlength="999"></textarea>
+                <button type="button" class="bg-blue-500 py-2 px-4 text-white rounded-md hover:bg-blue-600 focus:outline-none" (click)="save()">Kaydet</button>
+                <br>
+                <button type="button" class="bg-green-500 py-2 px-4 text-white rounded-md hover:bg-green-600 focus:outline-none" *ngIf="clientInfoVisible" (click)="clientSendInfoClick()"><mat-icon>phone</mat-icon> Müvekkili Bilgilendir</button>
+            </form>
+            <p class="mt-2 text-gray-400 text-sm" [ngStyle]="{'color': textColor}" *ngIf="textVisible">{{text}}</p>
+            <!-- <div class="mt-4 text-gray-500 text-sm">
+                Powered by <a href="https://fabform.io" class="underline" target="_blank" rel="noopener noreferrer">FabForm.io</a>
+            </div>  -->
+        </div>
+    </div>
+
+</body>
+
+</html>

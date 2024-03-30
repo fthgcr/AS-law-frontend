@@ -1,0 +1,56 @@
+<body>
+  <button mat-button (click)="logout()" style="float: right; display: flex; position: fixed; right: 20px; top: 20px; color: white;"><mat-icon>exit_to_app</mat-icon>Çıkış</button>
+
+  <div class="container" style="margin-left: 20%; margin-top: 5%">
+    <mat-form-field style="top: 10px;">
+      <mat-label>Filtre</mat-label>
+      <input
+        matInput
+        class="translucent-table"
+        (keyup)="applyFilter($event)"
+        placeholder="Örneğin: Ahmet, Sümeyye"
+        #input
+      />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="addButton" (click)="openEditPage(0)"><mat-icon>add</mat-icon> Müvekkil Ekle</button>
+
+    <mat-table
+      style="height: 500px; overflow: auto"
+      class="mat-elevation-z8 translucent-table"
+      [dataSource]="dataSource"
+    >
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef>İsim</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.firstName }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="surname">
+        <mat-header-cell *matHeaderCellDef>Soyisim</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.surname }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="identify">
+        <mat-header-cell *matHeaderCellDef>T.C. Kimlik No</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.identify }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef>Telefon Numarası</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.phone }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Aksiyon</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <a mat-icon-button (click)="openEditPage(row.uid)" style="color: green;">
+            <mat-icon>edit</mat-icon>
+          </a>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+</body>

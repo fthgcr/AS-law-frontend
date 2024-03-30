@@ -1,0 +1,28 @@
+<button mat-button (click)="logout()" style="float: right; display: flex; position: fixed; right: 20px; top: 20px;"><mat-icon>exit_to_app</mat-icon>Çıkış</button>
+
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{user.firstName}} {{user.surname}}</mat-card-title>
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="/assets/photos/client-bg.jpg"
+          alt="AS Hukuk & Danışmanlık"
+        />
+        <mat-card-content>
+          <p>
+            {{user.definition}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button style="background-color: green;" (click)="openWhatsapp()"><mat-icon>phone</mat-icon>Whatsapp</button> &nbsp;
+          <button mat-button style="background-color: black; color: white;" (click)="goSite()"><mat-icon style="color: white;">link</mat-icon>Sitemiz</button>
+          <!-- <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+      </mat-card>
+      
+</div>
+
