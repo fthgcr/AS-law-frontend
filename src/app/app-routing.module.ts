@@ -6,10 +6,7 @@ import { PanelEditComponent } from './components/panel-edit/panel-edit.component
 import { ClientComponent } from './components/client/client.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent,
-  },
+  
   {
     path: 'panel',
     component: PanelListComponent,
@@ -21,6 +18,10 @@ const routes: Routes = [
   {
     path: 'client',
     component: ClientComponent,
+  },
+  {
+    path: '',
+    component: LoginComponent,
   },
   { path: '**', redirectTo: '/' }
 ];
