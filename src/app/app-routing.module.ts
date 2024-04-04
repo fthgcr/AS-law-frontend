@@ -20,14 +20,10 @@ const routes: Routes = [
     component: ClientComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: '',
-    redirectTo: '/login', pathMatch: 'full'
+    component: LoginComponent, pathMatch: 'full'
   },
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({

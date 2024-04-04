@@ -57,6 +57,9 @@ import { CookieService } from 'ngx-cookie-service';
     //provideClientHydration()
     CookieService
   ],
+  exports: [
+    AppRoutingModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
