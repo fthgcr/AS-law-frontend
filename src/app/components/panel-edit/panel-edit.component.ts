@@ -14,6 +14,7 @@ export class PanelEditComponent implements OnInit{
 
   constructor(private route: ActivatedRoute, private userService : UserService, private router: Router,private _snackBar: MatSnackBar,){}
 
+  routeParamId: number = -1;
   user : User = new User();
   clientMessage : String = "";
 
@@ -26,9 +27,9 @@ export class PanelEditComponent implements OnInit{
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const clientId = params.get('id');
-      const id : number = clientId ? +clientId : 0;
-      if(id !== 0){
-        this.findMuvekkil(id);
+      this.routeParamId = clientId ? +clientId : 0;
+      if(this.routeParamId !== 0){
+        this.findMuvekkil(this.routeParamId);
       }
     });
   }
@@ -70,14 +71,19 @@ export class PanelEditComponent implements OnInit{
   }
 
   clientSendInfo(){
-    if(this.user.phone && this.user.phone !== "" && this.user.phone.length === 11 && this.user.definition !== this.clientMessage){
+    if(this.routeParamId === 0 && this.user.phone && this.user.phone !== "" && this.user.phone.length === 11){
+      this.clientInfoVisible = true;
+    } else if (this.user.phone && this.user.phone !== "" && this.user.phone.length === 11 && this.user.definition !== this.clientMessage){
       this.clientInfoVisible = true;
     }
   }
 
   clientSendInfoClick(){
-    const phoneNumber = this.user.phone; // Replace with your phone number
-    const message = 'Bilgileriniz Güncellendi. ' + "TODO" + " tıklayarak detaylarını öğrenebilirsiniz."; // Replace with your message
+    const phoneNumber = this.user.phone;
+    var message = 'Bilgileriniz Güncellendi. ' + "TODO" + " tıklayarak detaylarını öğrenebilirsiniz."; 
+    if(this.routeParamId === 0){
+      message = 'AS Hukuk & Danışmanlık Kaydınız Açılmıştır. \nKullanıcı Adınız : ' + this.user.identify + "\nŞifreniz : " + this.user.password + "\n";
+    }
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappLink, '_blank');

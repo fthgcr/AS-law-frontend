@@ -51,8 +51,6 @@ export class LoginComponent implements OnInit{
         } else {
           this.router.navigate(['/client']);
         }
-      } else {
-        this.callSnackBar("Beklenmedik bir hata oluştu. Lütfen tekrar deneyiniz.", 3000);
       }
     }, (error) => {
       this.router.navigate(['/']);
